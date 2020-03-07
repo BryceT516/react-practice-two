@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import FactsContainer from './components/FactsContainer';
+import UserInfo from './components/UserInfo';
 
 import { withAuthenticator } from 'aws-amplify-react';
 import Amplify, { Auth } from 'aws-amplify';
@@ -46,7 +47,7 @@ class App extends Component {
           
           <FactsContainer idToken={this.state.jwtToken} />
         </header>
-        
+        <UserInfo />
       </div>
     );
   }

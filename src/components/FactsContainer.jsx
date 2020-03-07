@@ -28,7 +28,7 @@ class FactsContainer extends Component {
         headers: { 'Authorization': `Bearer ${this.props.idToken}` }
       };
 
-      let url = 'https://radiant-lowlands-10301.herokuapp.com/v1/facts'
+      let url = 'http://localhost:3000/v1/facts';
       
       axios.get(url, config)
         .then(response => {
