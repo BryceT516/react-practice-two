@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
-import FactsContainer from './components/FactsContainer';
 
 import { withAuthenticator } from 'aws-amplify-react';
 import Amplify, { Auth } from 'aws-amplify';
+
+import ConversationsList from './components/ConversationsList';
 
 Amplify.configure({
     Auth: {
@@ -41,12 +41,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          
-          <FactsContainer idToken={this.state.jwtToken} />
-        </header>
-        
+        <ConversationsList />
       </div>
     );
   }
