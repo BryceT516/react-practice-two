@@ -1,0 +1,32 @@
+.GameListing {
+  background-color: blue;
+}
+
+.GameListing div {
+  display: none;
+}
+
+.ActiveGameListing div {
+  display: block;
+}
+
+.GameHeading {
+  display: inline-block;
+}
+
+.new-game-btn {
+  background-color: white;
+  border: 2px solid #4CAF50; /* Green */
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.new-game-btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}

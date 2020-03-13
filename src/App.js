@@ -5,7 +5,7 @@ import './App.css';
 import { withAuthenticator } from 'aws-amplify-react';
 import Amplify, { Auth } from 'aws-amplify';
 
-import ConversationsList from './components/ConversationsList';
+import GamesList from './components/GamesList';
 
 Amplify.configure({
     Auth: {
@@ -41,7 +41,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <ConversationsList />
+        <GamesList />
       </div>
     );
   }
