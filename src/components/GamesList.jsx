@@ -2,12 +2,18 @@ import React from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import { API_ROOT } from '../constants';
 import './GamesList.css';
+import Modal from './Modal/Modal';
+import NewGameForm from './NewGameForm/NewGameForm';
 
 class GamesList extends React.Component {
-  state = {
-    games: [],
-    activeGame: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      games: [],
+      activeGame: null,
+      newGameShow: false
+    };
+  }
   
   componentDidMount = () => {
     fetch(`${API_ROOT}/games`)
@@ -26,8 +32,24 @@ class GamesList extends React.Component {
     });
   };
   
+  showNewGameForm() {
+    this.setState({newGameShow: !this.state.newGameShow})
+  };
+  
+  hideNewGameForm = e => {
+    this.setState({newGameShow: false});
+  };
+  
+  createNewGame = (formData) => {
+    console.log("in createNewGame...");
+    console.log(formData);
+    this.hideNewGameForm();
+  }
+  
   render = () => {
-    const { games, activeGame } = this.state;
+    const games = this.state.games;
+    const activeGame = this.state.activeGame;
+    
     return (
       <div className="gamesList">
         <ActionCableConsumer
@@ -35,9 +57,12 @@ class GamesList extends React.Component {
           onReceived={this.handleReceivedGame}
         />
         <h2 className="GameHeading">Games</h2>
-        <button id="new-game-btn" onClick={this.showNewGameForm} className="new-game-btn">
+        <button id="new-game-btn" onClick={e => {this.showNewGameForm();}} className="new-game-btn">
         New Game
         </button>
+        <Modal show={this.state.newGameShow} hide={this.hideNewGameForm}>
+          <NewGameForm />
+        </Modal>
         <ul>{mapGames(games, this.handleClick, activeGame)}</ul>
         
       </div>
